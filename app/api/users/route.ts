@@ -5,7 +5,7 @@ import { prisma } from "@/prisma";
 export const GET = async (req: NextRequest) => {
   try {
     const { userId } = auth();
-    console.log(userId)
+    // console.log(userId)
     if (!userId) {
       return new NextResponse("Not authenticated", { status: 401 });
     }
