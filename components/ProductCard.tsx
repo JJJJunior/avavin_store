@@ -4,11 +4,13 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import HeartFavorite from "./HeartFavorite";
+import { UserType } from "@/lib/types";
 
 interface ProductCardProps {
   product: ProductType;
+  updateSignedInUser?: (updateUser: UserType) => void;
 }
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, updateSignedInUser }) => {
   const router = useRouter();
   return (
     <div
@@ -28,7 +30,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
       <div className="flex justify-between items-center">
         <p className="text-body-bold">${product.price}</p>
-        <HeartFavorite productInfo={product} />
+        <HeartFavorite productInfo={product} updateSignedInUser={updateSignedInUser} />
       </div>
     </div>
   );

@@ -8,9 +8,10 @@ import { Heart } from "lucide-react";
 
 interface HeartProps {
   productInfo: ProductType;
+  updateSignedInUser?: (updateUser: UserType) => void;
 }
 
-const HeartFavorite: React.FC<HeartProps> = ({ productInfo }) => {
+const HeartFavorite: React.FC<HeartProps> = ({ productInfo, updateSignedInUser }) => {
   const { user } = useUser();
   const [loading, setLoading] = useState<boolean>(false);
   const [singedInUser, setSingedInUser] = useState<UserType | null>(null);
@@ -48,6 +49,7 @@ const HeartFavorite: React.FC<HeartProps> = ({ productInfo }) => {
         const updateUser = res.data;
         setSingedInUser(updateUser);
         setIsLinked(updateUser.wishlist.split(",").includes(productInfo.id));
+        updateSignedInUser && updateSignedInUser(updateUser);
       }
     } catch (err) {
       console.error("[wishlist_POST]:", err);

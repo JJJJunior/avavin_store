@@ -51,6 +51,10 @@ const WishlistPage = () => {
     }
   }, [signedInUser]);
 
+  const updateSignedInUser = (updatedUser: UserType) => {
+    setSignedInUser(updatedUser);
+  };
+
   return loading ? (
     <Loader />
   ) : (
@@ -59,7 +63,7 @@ const WishlistPage = () => {
       {wishlist.length === 0 && <p>No items in your wishlist</p>}
       <div className="flex flex-wrap justify-center gap-16">
         {wishlist.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} updateSignedInUser={updateSignedInUser} />
         ))}
       </div>
     </div>
