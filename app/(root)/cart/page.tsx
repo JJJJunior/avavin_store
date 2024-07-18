@@ -66,16 +66,16 @@ const Cart = () => {
                     alt="product"
                   />
                   <div className="flex flex-col gap-3 ml-4">
-                    <p className="text-sm font-semibold w-60 text-wrap">{cartItem.item.title}</p>
-                    {cartItem.color && <p className="text-small-medium">{cartItem.color}</p>}
-                    {cartItem.size && <p className="text-small-medium">{cartItem.size}</p>}
-                    <p className="text-small-bold">${cartItem.item.price}</p>
+                    <p className="text-sm font-semibold w-80 text-wrap">{cartItem.item.title}</p>
+                    {cartItem.color && <p className="text-small-medium">Color: {cartItem.color}</p>}
+                    {cartItem.size && <p className="text-small-medium">Size: {cartItem.size}</p>}
+                    <p className="text-small-bold">$ {cartItem.item.price}</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-center">
                   <MinusCircle
                     className="hover:text-red-1 cursor-pointer"
-                    onClick={() => cart.decreaseQuantity(cartItem.item.id)}
+                    onClick={() => cartItem.quantity > 1 && cart.decreaseQuantity(cartItem.item.id)}
                   />
                   <p className="text-body-bold">{cartItem.quantity}</p>
                   <PlusCircle
