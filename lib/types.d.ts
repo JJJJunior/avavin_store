@@ -29,3 +29,19 @@ export type UserType = {
   createdAt: string;
   updatedAt: string;
 };
+
+type OrdersType = {
+  id: string;
+  products: OrderItemType[];
+  shippingAddress: [Object];
+  shippingRate: string;
+  totalAmount: number;
+  createdAt: Date;
+};
+
+type OrderItemType = {
+  product: ProductType;
+  quantity: number;
+  color: string;
+  size: string;
+};
